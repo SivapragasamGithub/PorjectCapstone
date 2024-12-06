@@ -11,7 +11,7 @@ const Reviews = ({ freelancerId }) => {
         const fetchReviews = async () => {
             try {
                 const response = await axios.get(
-                    `http://localhost:3000/freelancers/${freelancerId}/reviews`
+                    `https://project-backend-vdkg.onrender.com/freelancers/${freelancerId}/reviews`
                 );
                 setReviews(response.data.reviews);
             } catch (error) {
@@ -33,7 +33,7 @@ const Reviews = ({ freelancerId }) => {
                 comment: newReview.comment,
             };
 
-            const response = await axios.post("http://localhost:3000/reviews", reviewData);
+            const response = await axios.post("https://project-backend-vdkg.onrender.com/reviews", reviewData);
             setReviews((prev) => [...prev, response.data.review]);
             setNewReview({ rating: 0, comment: "" });
         } catch (error) {
@@ -46,7 +46,7 @@ const Reviews = ({ freelancerId }) => {
         try {
             const responseData = { response };
             const response = await axios.put(
-                `http://localhost:3000/reviews/${reviewId}`,
+                `https://project-backend-vdkg.onrender.com/reviews/${reviewId}`,
                 responseData
             );
 

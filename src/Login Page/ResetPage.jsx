@@ -58,7 +58,7 @@ function ResetPage() {
         setError('');
 
         try {
-            const response = await axios.post('http://localhost:3000/reset-password', { email, type });
+            const response = await axios.post('https://project-backend-vdkg.onrender.com/reset-password', { email, type });
             console.log(response.data.message);
 
             setMessage(response.data.message); // Show success message

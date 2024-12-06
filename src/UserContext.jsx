@@ -122,7 +122,7 @@ export const UserProvider = ({ children }) => {
     const getData = async () => {
         // console.log("Before axios");
         try {
-            const users = await axios.get("http://localhost:3000/users")
+            const users = await axios.get("https://project-backend-vdkg.onrender.com/users")
             // console.log(users.data);
             setCandidate(users.data)
         } catch (error) {

@@ -25,15 +25,15 @@ function Login() {
         },
         onSubmit: async (values) => {
             try {
-                const response = await axios.post("http://localhost:3000/login", values);
+                const response = await axios.post("https://project-backend-vdkg.onrender.com/login", values);
 
                 if (response.status === 200) {
-                    const { token, email, _id, userType } = response.data;                    
+                    const { token, email, _id, userType } = response.data;
                     localStorage.setItem("authToken", token);
                     localStorage.setItem("userEmail", email);
                     localStorage.setItem("userId", _id);
                     localStorage.setItem("userType", userType);
-                    alert("Login successful!");                    
+                    alert("Login successful!");
                     if (userType === "employer") {
                         navigate(`/employerProfile/${_id}`);
                     } else if (userType === "candidate") {

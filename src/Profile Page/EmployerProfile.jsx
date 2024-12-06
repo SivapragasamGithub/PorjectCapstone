@@ -12,7 +12,7 @@ function EmployerProfile() {
     try {
       if (id) {
         console.log("Fetching employer with ID:", id);
-        const response = await axios.get(`http://localhost:3000/employer/${id}`);
+        const response = await axios.get(`https://project-backend-vdkg.onrender.com/employer/${id}`);
         setEmployerDetail(response.data);
         console.log("Employer data fetched:", response.data);
       }

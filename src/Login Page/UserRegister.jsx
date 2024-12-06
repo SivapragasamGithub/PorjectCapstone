@@ -30,7 +30,7 @@ function UserRegister() {
         onSubmit: async (values) => {
             // console.log(values);
             try {
-                const response = await axios.post("http://localhost:3000/userregister", values)
+                const response = await axios.post("https://project-backend-vdkg.onrender.com/userregister", values)
                 // console.log(values);                
                 navigate("/usermodal")
             } catch (error) {

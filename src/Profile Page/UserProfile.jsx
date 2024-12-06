@@ -15,7 +15,7 @@ function UserProfile() {
   const fetchUser = async () => {
     try {
       if (id) {
-        const response = await axios.get(`http://localhost:3000/user/${id}`);
+        const response = await axios.get(`https://project-backend-vdkg.onrender.com/user/${id}`);
         console.log("the review while get profile is:", response.data);
         const userfromBE = response.data.user
         const reviewfromBE = response.data.reviews
@@ -55,7 +55,7 @@ function UserProfile() {
       };
 
       const response = await axios.put(
-        `http://localhost:3000/reviews/${editingReview}`,
+        `https://project-backend-vdkg.onrender.com/reviews/${editingReview}`,
         updatedReview
       );
 

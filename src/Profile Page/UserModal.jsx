@@ -86,12 +86,12 @@ function UserModal() {
         onSubmit: async (values) => {
             try {
                 if (id) {
-                    const user = await axios.put(`http://localhost:3000/user/${id}`, values)
+                    const user = await axios.put(`https://project-backend-vdkg.onrender.com/user/${id}`, values)
                     console.log("bfgbvdfs:", user.data);
                     setUsers(user.data)
                     navigate(`/profile/${id}`)
                 } else {
-                    const regiterData = await axios.post("http://localhost:3000/user", values);
+                    const regiterData = await axios.post("https://project-backend-vdkg.onrender.com/user", values);
                     console.log("The register Data while model submit:", regiterData);
                     const _id = regiterData.data._id
                     navigate(`/profile/${_id}`)
@@ -105,7 +105,7 @@ function UserModal() {
     const fetchuserdata = async () => {
         if (id) {
             try {
-                const response = await axios.get(`http://localhost:3000/user/${id}`)
+                const response = await axios.get(`https://project-backend-vdkg.onrender.com/user/${id}`)
                 console.log("thresponse after usermodal edited from back end is:", response.data.user);
                 const user = response.data.user
                 const review = response.data.reviews

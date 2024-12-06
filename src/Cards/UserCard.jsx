@@ -73,7 +73,7 @@ function UserCard({ user }) {
     useEffect(() => {
         const fetchReviews = async () => {
             try {
-                const response = await axios.get(`http://localhost:3000/freelancers/${user._id}/reviews`);
+                const response = await axios.get(`https://project-backend-vdkg.onrender.com/freelancers/${user._id}/reviews`);
                 setReviews(response.data.reviews || []);
             } catch (error) {
                 console.error("Error fetching reviews:", error);
@@ -98,7 +98,7 @@ function UserCard({ user }) {
                 comment,
             };
 
-            const response = await axios.post("http://localhost:3000/reviews", reviewData);
+            const response = await axios.post("https://project-backend-vdkg.onrender.com/reviews", reviewData);
 
             if (response.data) {
                 // Update the reviews list with the new review

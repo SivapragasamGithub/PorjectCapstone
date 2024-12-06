@@ -34,7 +34,7 @@ function EmployerReister() {
         onSubmit: async (values) => {
             // console.log(values);
             try {
-                const response = await axios.post("http://localhost:3000/employerregister", values)
+                const response = await axios.post("https://project-backend-vdkg.onrender.com/employerregister", values)
                 // console.log(values);                
                 navigate("/employermodal")
             } catch (error) {

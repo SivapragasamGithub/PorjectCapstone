@@ -10,7 +10,7 @@ export const EmployersProvider = ({ children }) => {
     const getData = async () => {
         // console.log("Before axios");
         try {
-            const response = await axios.get("http://localhost:3000/employers")
+            const response = await axios.get("https://project-backend-vdkg.onrender.com/employers")
             // console.log(users.data);
             setEmployer(response.data)
         } catch (error) {
