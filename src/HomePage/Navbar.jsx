@@ -38,14 +38,6 @@ function Navbar({ onSearch, onemployersearch }) {
         }
     };
 
-    // const handleSearchClick = () => {
-    //     if (searchType === "candidates" && onSearch) {
-    //         onSearch(query, searchType);
-    //     } else if (searchType === "employers" && onemployersearch) {
-    //         onemployersearch(query, employersearchType);
-    //     }
-    // };
-
 
     const handleProfile = () => {
         if (userType === "employer") {
@@ -89,51 +81,8 @@ function Navbar({ onSearch, onemployersearch }) {
                             </Link>
                         </li>
                     </ul>
-                    {/* <div className="col-lg-3 d-flex align-items-center"> */}
-                    {/* Dropdown for Search Type */}
-                    {/* <select
-                            className="form-select me-2"
-                            value={searchType}
-                            onChange={(e) => setSearchType(e.target.value)}
-                        >
-                            <option value="candidates">Candidates</option>
-                            <option value="employers">Employers</option>
-                        </select> */}
-                    {/* Search Bar */}
-                    {/* <input
-                            type="text"
-                            className="form-control"
-                            placeholder={
-                                searchType === "candidates"
-                                    ? "Search candidates by name or skills"
-                                    : "Search employers by company or skills"
-                            }
-                            value={query}
-                            onChange={handleInputChange}
-                        /> */}
-                    {/* </div> */}
+
                     <div className="col-lg-3 d-flex align-items-center">
-                        {/* Dropdown for Search Type */}
-                        {/* <select
-                            className="form-select me-2"
-                            value={employersearchType}
-                            onChange={(e) => {
-                                if (searchType === "candidates") {
-                                    setSearchType(e.target.value);
-                                    console.log("the onchange for setsearchtype is", onChange);
-
-                                } else {
-                                    setemployerSearchType(e.target.value);
-                                    console.log("the onchange for setemployersearchtype is", onChange);
-
-                                }
-                            }}
-                        >
-                            <option value="candidates">Candidates</option>
-                            <option value="employers">Employers</option>
-                        </select> */}
-
-                        {/* Search Bar */}
                         <input
                             type="text"
                             className="form-control"

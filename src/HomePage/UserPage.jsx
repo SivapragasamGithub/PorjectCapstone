@@ -1,6 +1,5 @@
 import React from "react";
 import UserCard from "../Cards/UserCard";
-import Reviews from "../Reviews";
 
 function UserPage({ candidates }) {
     return (
