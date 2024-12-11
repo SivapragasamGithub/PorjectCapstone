@@ -26,10 +26,12 @@ function App() {
       const skillsArray = typeof candidate.skills === "string"
         ? candidate.skills.split(",").map((skill) => skill.trim().toLowerCase())
         : [];
+      console.log("the skillsarray after map candidates is", skillsArray);
 
       const skillsMatch = skillsArray.some((skill) =>
         skill.includes(query.toLowerCase())
       );
+      console.log("the skillsMatch after map candidates is", skillsMatch);
 
       const nameMatch = candidate.name
         .toLowerCase()
@@ -44,13 +46,15 @@ function App() {
   };
   const handleemployerSearch = (query) => {
     const results = employer.filter((employers) => {
-      const skillsArray = typeof employers.skills === "string"
-        ? employers.skills.split(",").map((skill) => skill.trim().toLowerCase())
+      const skillsArray = typeof employers.skillsneeded === "string"
+        ? employers.skillsneeded.split(",").map((skill) => skill.trim().toLowerCase())
         : [];
+      console.log("the skillsarray after map employer is", skillsArray);
 
       const skillsMatch = skillsArray.some((skill) =>
         skill.includes(query.toLowerCase())
       );
+      console.log("the skillsMatch after map employer is", skillsMatch);
 
       const nameMatch = employers.company
         .toLowerCase()
