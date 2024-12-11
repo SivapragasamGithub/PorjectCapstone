@@ -34,7 +34,6 @@ function Navbar({ onSearch, onemployersearch }) {
         }
     };
 
-
     const handleProfile = () => {
         if (userType === "employer") {
             navigate(`/employerProfile/${userId}`);
