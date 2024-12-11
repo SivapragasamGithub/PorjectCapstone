@@ -103,7 +103,7 @@ function UserCard({ user }) {
                             reviews.map((review) => (
                                 <div key={review._id} className="border-bottom mb-2">
                                     <strong>Rating:</strong> {review.rating} ⭐<br />
-                                    <strong>Comment:</strong>{clientemail} {review.comment}
+                                    <strong>Comment:</strong>{`${clientemail}:${review.comment}`}
                                     <br />
                                     {review.response && (
                                         <div>
