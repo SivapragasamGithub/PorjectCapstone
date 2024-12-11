@@ -73,7 +73,9 @@ function EmployerModal() {
                     const regiterData = await axios.post("https://project-backend-vdkg.onrender.com/employer", values);
                     console.log("The register Data while model submit:", regiterData);
                     const _id = regiterData.data._id
-                    navigate(`/employerProfile/${_id}`)
+                    // navigate(`/employerProfile/${_id}`)
+                    navigate("/login")
+
                 }
             } catch (error) {
                 alert("Something went wrong");

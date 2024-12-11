@@ -17,6 +17,7 @@ import employersContext, { EmployersProvider } from "./EmployersContext"
 import EmployerProfile from "./Profile Page/EmployerProfile"
 function App() {
   const { candidat } = useContext(userContext);
+  
   const { employer } = useContext(employersContext);
   const [filteredCandidates, setFilteredCandidates] = useState([]);
   const [filteredemployers, setfilteredemployers] = useState([]);
