@@ -25,9 +25,9 @@ function Navbar({ onSearch, onemployersearch }) {
         setQuery(e.target.value);
     };
     const handleSearchClick = () => {
-        if (onSearch) {
-            onSearch(query, searchType);
-        }
+        // if (onSearch) {
+        //     onSearch(query, searchType);
+        // }
         if (onemployersearch) {
             onemployersearch(query, employersearchType)
         }
@@ -108,21 +108,22 @@ function Navbar({ onSearch, onemployersearch }) {
                         {/* Dropdown for Search Type */}
                         <select
                             className="form-select me-2"
-                            value={searchType === "candidates" ? searchType : employersearchType}
+                            value={employersearchType}
                             onChange={(e) => {
-                                if (searchType === "candidates") {
-                                    setSearchType(e.target.value);
-                                } else {
-                                    setemployerSearchType(e.target.value);
-                                }
+                                // if (searchType === "candidates") {
+                                //     setSearchType(e.target.value);
+                                // } else {
+                                setemployerSearchType(e.target.value);
+                                // }
                             }}
                             onClick={(e) => {
-                                if (searchType === "candidates") {
-                                    setSearchType(e.target.value);
-                                } else {
-                                    setemployerSearchType(e.target.value);
-                                }
-                            }}
+                                // if (searchType === "candidates") {
+                                //     setSearchType(e.target.value);
+                                // } else {
+                                setemployerSearchType(e.target.value);
+                            }
+                                // }
+                            }
                         >
                             <option value="candidates">Candidates</option>
                             <option value="employers">Employers</option>
