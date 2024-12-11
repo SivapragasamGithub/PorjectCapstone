@@ -114,7 +114,7 @@ function Navbar({ onSearch, onemployersearch }) {
                     {/* </div> */}
                     <div className="col-lg-3 d-flex align-items-center">
                         {/* Dropdown for Search Type */}
-                        <select
+                        {/* <select
                             className="form-select me-2"
                             value={employersearchType}
                             onChange={(e) => {
@@ -131,7 +131,7 @@ function Navbar({ onSearch, onemployersearch }) {
                         >
                             <option value="candidates">Candidates</option>
                             <option value="employers">Employers</option>
-                        </select>
+                        </select> */}
 
                         {/* Search Bar */}
                         <input
