@@ -8,10 +8,6 @@ function Navbar({ onSearch, onemployersearch }) {
     const [employersearchType, setemployerSearchType] = useState("employers"); // Default search for 
     const navigate = useNavigate();
 
-    console.log("the searchtype is:", searchType);
-    console.log("the employersearchtype is:", employersearchType);
-
-
 
     const userId = localStorage.getItem("userId");
     const userType = localStorage.getItem("userType");
@@ -48,8 +44,6 @@ function Navbar({ onSearch, onemployersearch }) {
             alert("User type not identified. Please log in again.");
         }
     };
-
-    console.log("The query is:", query);
 
     return (
         <nav className="navbar navbar-expand-lg bg-body-tertiary rounded">
