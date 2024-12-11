@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-function Navbar({ onSearch }) {
+function Navbar({ onSearch, onemployersearch }) {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [query, setQuery] = useState("");
     const [searchType, setSearchType] = useState("candidates"); // Default search for candidates
+    const [employersearchType, setemployerSearchType] = useState("employers"); // Default search for 
     const navigate = useNavigate();
 
     const userId = localStorage.getItem("userId");
@@ -26,6 +27,9 @@ function Navbar({ onSearch }) {
     const handleSearchClick = () => {
         if (onSearch) {
             onSearch(query, searchType);
+        }
+        if (onemployersearch) {
+            onSearch(query, employersearchType)
         }
     };
 
