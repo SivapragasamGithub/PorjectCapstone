@@ -17,7 +17,7 @@ import employersContext, { EmployersProvider } from "./EmployersContext"
 import EmployerProfile from "./Profile Page/EmployerProfile"
 function App() {
   const { candidat } = useContext(userContext);
-  
+
   const { employer } = useContext(employersContext);
   const [filteredCandidates, setFilteredCandidates] = useState([]);
   const [filteredemployers, setfilteredemployers] = useState([]);
@@ -27,12 +27,10 @@ function App() {
       const skillsArray = typeof candidate.skills === "string"
         ? candidate.skills.split(",").map((skill) => skill.trim().toLowerCase())
         : [];
-      console.log("the skillsarray after map candidates is", skillsArray);
 
       const skillsMatch = skillsArray.some((skill) =>
         skill.includes(query.toLowerCase())
       );
-      console.log("the skillsMatch after map candidates is", skillsMatch);
 
       const nameMatch = candidate.name
         .toLowerCase()
@@ -41,7 +39,6 @@ function App() {
       return skillsMatch || nameMatch;
     });
     setFilteredCandidates(results);
-    console.log("The filteredcandidates from app.jsx is", filteredCandidates);
 
 
   };
@@ -50,12 +47,10 @@ function App() {
       const skillsArray = typeof employers.skillsneeded === "string"
         ? employers.skillsneeded.split(",").map((skill) => skill.trim().toLowerCase())
         : [];
-      console.log("the skillsarray after map employer is", skillsArray);
 
       const skillsMatch = skillsArray.some((skill) =>
         skill.includes(query.toLowerCase())
       );
-      console.log("the skillsMatch after map employer is", skillsMatch);
 
       const nameMatch = employers.company
         .toLowerCase()
@@ -64,7 +59,6 @@ function App() {
       return skillsMatch || nameMatch;
     });
     setfilteredemployers(results);
-    console.log("The filteredemployers from app.jsx is", filteredemployers);
 
   }
   return (
