@@ -38,7 +38,9 @@ function App() {
       return skillsMatch || nameMatch;
     });
     setFilteredCandidates(results);
-    
+    console.log("The filteredcandidates from app.jsx is", filteredCandidates);
+
+
   };
   const handleemployerSearch = (query) => {
     const results = employer.filter((employers) => {
@@ -57,6 +59,8 @@ function App() {
       return skillsMatch || nameMatch;
     });
     setfilteredemployers(results);
+    console.log("The filteredemployers from app.jsx is", filteredemployers);
+
   }
   return (
     <>
