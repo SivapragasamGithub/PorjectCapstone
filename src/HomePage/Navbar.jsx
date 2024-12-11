@@ -24,14 +24,23 @@ function Navbar({ onSearch, onemployersearch }) {
     const handleInputChange = (e) => {
         setQuery(e.target.value);
     };
+    // const handleSearchClick = () => {
+    //     if (onSearch) {
+    //         onSearch(query, searchType);
+    //     }
+    //     if (onemployersearch) {
+    //         onSearch(query, employersearchType)
+    //     }
+    // };
+
     const handleSearchClick = () => {
-        if (onSearch) {
+        if (searchType === "candidates" && onSearch) {
             onSearch(query, searchType);
-        }
-        if (onemployersearch) {
-            onSearch(query, employersearchType)
+        } else if (searchType === "employers" && onemployersearch) {
+            onemployersearch(query, employersearchType);
         }
     };
+
 
     const handleProfile = () => {
         if (userType === "employer") {
@@ -72,16 +81,46 @@ function Navbar({ onSearch, onemployersearch }) {
                             </Link>
                         </li>
                     </ul>
-                    <div className="col-lg-3 d-flex align-items-center">
-                        {/* Dropdown for Search Type */}
-                        <select
+                    {/* <div className="col-lg-3 d-flex align-items-center"> */}
+                    {/* Dropdown for Search Type */}
+                    {/* <select
                             className="form-select me-2"
                             value={searchType}
                             onChange={(e) => setSearchType(e.target.value)}
                         >
                             <option value="candidates">Candidates</option>
                             <option value="employers">Employers</option>
+                        </select> */}
+                    {/* Search Bar */}
+                    {/* <input
+                            type="text"
+                            className="form-control"
+                            placeholder={
+                                searchType === "candidates"
+                                    ? "Search candidates by name or skills"
+                                    : "Search employers by company or skills"
+                            }
+                            value={query}
+                            onChange={handleInputChange}
+                        /> */}
+                    {/* </div> */}
+                    <div className="col-lg-3 d-flex align-items-center">
+                        {/* Dropdown for Search Type */}
+                        <select
+                            className="form-select me-2"
+                            value={searchType === "candidates" ? searchType : employersearchType}
+                            onChange={(e) => {
+                                if (searchType === "candidates") {
+                                    setSearchType(e.target.value);
+                                } else {
+                                    setemployerSearchType(e.target.value);
+                                }
+                            }}
+                        >
+                            <option value="candidates">Candidates</option>
+                            <option value="employers">Employers</option>
                         </select>
+
                         {/* Search Bar */}
                         <input
                             type="text"
@@ -92,9 +131,10 @@ function Navbar({ onSearch, onemployersearch }) {
                                     : "Search employers by company or skills"
                             }
                             value={query}
-                            onChange={handleInputChange}
+                            onChange={(e) => setQuery(e.target.value)}
                         />
                     </div>
+
                     <button className="btn btn-outline-success m-1" onClick={handleSearchClick}>
                         Search
                     </button>
