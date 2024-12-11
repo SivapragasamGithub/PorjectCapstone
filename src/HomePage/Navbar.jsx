@@ -56,6 +56,9 @@ function Navbar({ onSearch, onemployersearch }) {
             alert("User type not identified. Please log in again.");
         }
     };
+
+    console.log("The query is:", query);
+
     return (
         <nav className="navbar navbar-expand-lg bg-body-tertiary rounded">
             <div className="container-fluid">
