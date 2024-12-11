@@ -8,6 +8,11 @@ function Navbar({ onSearch, onemployersearch }) {
     const [employersearchType, setemployerSearchType] = useState("employers"); // Default search for 
     const navigate = useNavigate();
 
+    console.log("the searchtype is:", searchType);
+    console.log("the employersearchtype is:", employersearchType);
+
+
+
     const userId = localStorage.getItem("userId");
     const userType = localStorage.getItem("userType");
     // Check authentication state on component mount
@@ -25,9 +30,9 @@ function Navbar({ onSearch, onemployersearch }) {
         setQuery(e.target.value);
     };
     const handleSearchClick = () => {
-        // if (onSearch) {
-        //     onSearch(query, searchType);
-        // }
+        if (onSearch) {
+            onSearch(query, searchType);
+        }
         if (onemployersearch) {
             onemployersearch(query, employersearchType)
         }
@@ -110,20 +115,16 @@ function Navbar({ onSearch, onemployersearch }) {
                             className="form-select me-2"
                             value={employersearchType}
                             onChange={(e) => {
-                                // if (searchType === "candidates") {
-                                //     setSearchType(e.target.value);
-                                // } else {
-                                setemployerSearchType(e.target.value);
-                                // }
+                                if (searchType === "candidates") {
+                                    setSearchType(e.target.value);
+                                    console.log("the onchange for setsearchtype is", onChange);
+
+                                } else {
+                                    setemployerSearchType(e.target.value);
+                                    console.log("the onchange for setemployersearchtype is", onChange);
+
+                                }
                             }}
-                            onClick={(e) => {
-                                // if (searchType === "candidates") {
-                                //     setSearchType(e.target.value);
-                                // } else {
-                                setemployerSearchType(e.target.value);
-                            }
-                                // }
-                            }
                         >
                             <option value="candidates">Candidates</option>
                             <option value="employers">Employers</option>
