@@ -24,22 +24,22 @@ function Navbar({ onSearch, onemployersearch }) {
     const handleInputChange = (e) => {
         setQuery(e.target.value);
     };
-    // const handleSearchClick = () => {
-    //     if (onSearch) {
-    //         onSearch(query, searchType);
-    //     }
-    //     if (onemployersearch) {
-    //         onSearch(query, employersearchType)
-    //     }
-    // };
-
     const handleSearchClick = () => {
-        if (searchType === "candidates" && onSearch) {
+        if (onSearch) {
             onSearch(query, searchType);
-        } else if (searchType === "employers" && onemployersearch) {
-            onemployersearch(query, employersearchType);
+        }
+        if (onemployersearch) {
+            onSearch(query, employersearchType)
         }
     };
+
+    // const handleSearchClick = () => {
+    //     if (searchType === "candidates" && onSearch) {
+    //         onSearch(query, searchType);
+    //     } else if (searchType === "employers" && onemployersearch) {
+    //         onemployersearch(query, employersearchType);
+    //     }
+    // };
 
 
     const handleProfile = () => {
@@ -110,6 +110,13 @@ function Navbar({ onSearch, onemployersearch }) {
                             className="form-select me-2"
                             value={searchType === "candidates" ? searchType : employersearchType}
                             onChange={(e) => {
+                                if (searchType === "candidates") {
+                                    setSearchType(e.target.value);
+                                } else {
+                                    setemployerSearchType(e.target.value);
+                                }
+                            }}
+                            onClick={(e) => {
                                 if (searchType === "candidates") {
                                     setSearchType(e.target.value);
                                 } else {
