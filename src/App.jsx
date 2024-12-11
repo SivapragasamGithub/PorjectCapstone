@@ -57,7 +57,7 @@ function App() {
       return skillsMatch || nameMatch;
     });
     setfilteredemployers(results);
-  };
+  }
   return (
     <>
 

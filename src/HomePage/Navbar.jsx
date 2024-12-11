@@ -29,7 +29,7 @@ function Navbar({ onSearch, onemployersearch }) {
             onSearch(query, searchType);
         }
         if (onemployersearch) {
-            onSearch(query, employersearchType)
+            onemployersearch(query, employersearchType)
         }
     };
 
