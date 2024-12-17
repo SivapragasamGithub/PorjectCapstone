@@ -228,7 +228,7 @@ function UserCard({ user, appliedCompanies }) {
                     <div className="card-header fs-3 text-uppercase">{user.name}</div>
 
                     {/* Display Applied Companies */}
-                    {appliedCompanies.length > 0 && (
+                    {
                         <div className="p-3 bg-light text-start">
                             <h5>Applied Companies:</h5>
                             <ul>
@@ -239,7 +239,7 @@ function UserCard({ user, appliedCompanies }) {
                                 ))}
                             </ul>
                         </div>
-                    )}
+                    }
 
                     <div className="card-body d-flex">
                         <div>
