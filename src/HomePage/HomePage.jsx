@@ -1,14 +1,13 @@
 import React from 'react'
 import EmployerCards from '../Cards/EmployerCards';
 
-function HomePage({ employment,handleappclick }) {
-const companyname = ()=> handleappclick()
+function HomePage({ employment }) {
     return (
         <div className="container">
             <div className="row">
                 {employment.length > 0 ? (
                     employment.map((employer, index) =>
-                        <EmployerCards key={index} employer={employer} handleclick={companyname} />
+                        <EmployerCards key={index} employer={employer} />
                     )
                 ) : (
                     <p>No employers found.</p>

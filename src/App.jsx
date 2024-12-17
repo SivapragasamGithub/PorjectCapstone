@@ -65,9 +65,6 @@ function App() {
 
   }
 
-  const handleappclick = () => {
-    employer.map((employers) => employers.company)
-  }
   return (
     <>
 
@@ -77,7 +74,7 @@ function App() {
             <Navbar onSearch={handleSearch} onemployersearch={handleemployerSearch} />
             <Routes>
               <Route path="/Nav" element={<Navbar />} />
-              <Route path="/userpage" element={<UserPage candidates={filteredCandidates.length > 0 ? filteredCandidates : candidat} handleappclick={handleappclick} />} />
+              <Route path="/userpage" element={<UserPage candidates={filteredCandidates.length > 0 ? filteredCandidates : candidat} />} />
               <Route path="/jobspage" element={<HomePage employment={filteredemployers.length > 0 ? filteredemployers : employer} />} />
               <Route index path="/Login" element={<Login />} />
               <Route path="/user-register" element={<UserRegister />} />
