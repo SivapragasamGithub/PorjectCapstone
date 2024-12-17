@@ -17,10 +17,10 @@ import employersContext, { EmployersProvider } from "./EmployersContext"
 import EmployerProfile from "./Profile Page/EmployerProfile"
 function App() {
   const { candidat } = useContext(userContext);
+
   const { employer } = useContext(employersContext);
   const [filteredCandidates, setFilteredCandidates] = useState([]);
   const [filteredemployers, setfilteredemployers] = useState([]);
-  const [appliedcompany, setAppliedcompany] = useState([])
 
   const handleSearch = (query) => {
     const results = candidat.filter((candidate) => {
@@ -64,12 +64,6 @@ function App() {
     setfilteredemployers(results);
 
   }
-
-  const AppliedCompany = (companyname) => {
-    setAppliedcompany(employer.map(employer.company))
-  }
-
-
   return (
     <>
 
@@ -79,7 +73,7 @@ function App() {
             <Navbar onSearch={handleSearch} onemployersearch={handleemployerSearch} />
             <Routes>
               <Route path="/Nav" element={<Navbar />} />
-              <Route path="/userpage" element={<UserPage candidates={filteredCandidates.length > 0 ? filteredCandidates : candidat} AppliedCompanyname={AppliedCompany} />} />
+              <Route path="/userpage" element={<UserPage candidates={filteredCandidates.length > 0 ? filteredCandidates : candidat} />} />
               <Route path="/jobspage" element={<HomePage employment={filteredemployers.length > 0 ? filteredemployers : employer} />} />
               <Route index path="/Login" element={<Login />} />
               <Route path="/user-register" element={<UserRegister />} />

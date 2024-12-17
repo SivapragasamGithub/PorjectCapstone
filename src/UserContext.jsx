@@ -16,7 +16,7 @@ export const UserProvider = ({ children }) => {
             alert("something went wrong on get FE")
         }
     }
-        useEffect(() => {
+    useEffect(() => {
         getData()
     }, [])
 
