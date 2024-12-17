@@ -68,7 +68,7 @@ function App() {
         <EmployersProvider>
           <BrowserRouter>
             <Navbar onSearch={handleSearch} onemployersearch={handleemployerSearch} />
-            <Routes>
+            <Routes>              
               <Route path="/Nav" element={<Navbar />} />
               <Route path="/userpage" element={<UserPage candidates={filteredCandidates.length > 0 ? filteredCandidates : candidat} />} />
               <Route path="/jobspage" element={<HomePage employment={filteredemployers.length > 0 ? filteredemployers : employer} />} />
