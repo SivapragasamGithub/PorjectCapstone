@@ -156,9 +156,71 @@
 
 // export default UserCard;
 
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { useNavigate, useParams } from "react-router-dom";
 
 function UserCard({ user, appliedCompanies }) {
+    const [reviews, setReviews] = useState([]);
+    const [rating, setRating] = useState(0);
+    const [comment, setComment] = useState("");
+    const [userType, setUserType] = useState("");
+    const navigate = useNavigate();
+    const { id } = useParams
+
+    // Check if the current user is a candidate or an employer
+    useEffect(() => {
+        const currentUserType = localStorage.getItem("userType");
+        setUserType(currentUserType);
+    }, []);
+
+
+    useEffect(() => {
+        const fetchReviews = async () => {
+            try {
+                const response = await axios.get(`https://project-backend-vdkg.onrender.com/freelancers/${user._id}/reviews`);
+                setReviews(response.data.reviews || []);
+            } catch (error) {
+                console.error("Error fetching reviews:", error);
+            }
+        };
+
+        fetchReviews();
+    }, [id]);
+
+    // Handle review submission by candidate
+    const handleSubmitReview = async () => {
+        if (rating === 0 || comment === "") {
+            alert("Please provide a rating and a comment.");
+            return;
+        }
+
+        try {
+            const reviewData = {
+                freelancerId: user._id,
+                clientId: localStorage.getItem("userId"),
+                // clientemail: localStorage.getItem("userEmail"),
+                rating,
+                comment,
+            };
+
+            const response = await axios.post("https://project-backend-vdkg.onrender.com/reviews", reviewData);
+
+            if (response.data) {
+                // Update the reviews list with the new review
+                setReviews((prevReviews) => [response.data.review, ...prevReviews]);
+                setRating(0);
+                setComment("");
+                alert("Review submitted successfully.");
+            } else {
+                alert("Failed to submit review.");
+            }
+        } catch (error) {
+            console.error("Error submitting review:", error);
+        }
+    };
+
+
     return (
         <div className="container">
             <div className="m-1">
