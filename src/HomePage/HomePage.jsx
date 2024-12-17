@@ -7,7 +7,7 @@ function HomePage({ employment }) {
             <div className="row">
                 {employment.length > 0 ? (
                     employment.map((employer, index) =>
-                        <EmployerCards key={index} employer={employer} />
+                        <EmployerCards key={index} employer={employer} onApply={() => AppliedCompany(employer)} />
                     )
                 ) : (
                     <p>No employers found.</p>

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 
-function UserCard({ user }) {
+function UserCard({ user, AppliedCompanyname }) {
     const [reviews, setReviews] = useState([]);
     const [rating, setRating] = useState(0);
     const [comment, setComment] = useState("");
@@ -68,6 +68,7 @@ function UserCard({ user }) {
                 <div className="card text-center">
                     <div className="card-header fs-3 text-uppercase">{user.name}</div>
                     <div className="card-body d-flex">
+                        <div>Apllied Companies:{AppliedCompanyname}</div>
                         <div>
                             <img
                                 src={user.photo}
