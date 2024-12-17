@@ -1,6 +1,6 @@
 import React from 'react'
 
-function EmployerCards({ employer }) {
+function EmployerCards({ employer, handleclick }) {
   return (
     <div className="container">
       <div className='m-1'>
@@ -27,7 +27,7 @@ function EmployerCards({ employer }) {
                   </ul>
                 </div>
               </div>
-              <a href="#" className="btn btn-primary">Apply</a>
+              <button href="#" className="btn btn-primary" onClick={handleclick(employer.company)}>Apply</button>
             </div>
           </div>
           <div className="card-footer text-body-secondary text-end ">
