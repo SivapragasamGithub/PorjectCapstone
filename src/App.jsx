@@ -35,8 +35,11 @@ function App() {
       const nameMatch = candidate.name
         .toLowerCase()
         .includes(query.toLowerCase());
+      const rollMatch = candidate.role
+        .toLowerCase()
+        .includes(query.toLowerCase());
 
-      return skillsMatch || nameMatch;
+      return skillsMatch || nameMatch || rollMatch;
     });
     setFilteredCandidates(results);
 
@@ -68,7 +71,7 @@ function App() {
         <EmployersProvider>
           <BrowserRouter>
             <Navbar onSearch={handleSearch} onemployersearch={handleemployerSearch} />
-            <Routes>              
+            <Routes>
               <Route path="/Nav" element={<Navbar />} />
               <Route path="/userpage" element={<UserPage candidates={filteredCandidates.length > 0 ? filteredCandidates : candidat} />} />
               <Route path="/jobspage" element={<HomePage employment={filteredemployers.length > 0 ? filteredemployers : employer} />} />
