@@ -1,166 +1,8 @@
-// import React, { useState, useEffect } from "react";
-// import axios from "axios";
-// import { useNavigate, useParams } from "react-router-dom";
-
-// function   UserCard({ user }) {
-//     const [reviews, setReviews] = useState([]);
-//     const [rating, setRating] = useState(0);
-//     const [comment, setComment] = useState("");
-//     const [userType, setUserType] = useState("");
-//     const navigate = useNavigate();
-//     const { id } = useParams
-
-//     // Check if the current user is a candidate or an employer
-//     useEffect(() => {
-//         const currentUserType = localStorage.getItem("userType");
-//         setUserType(currentUserType);
-//     }, []);
-
-
-//     useEffect(() => {
-//         const fetchReviews = async () => {
-//             try {
-//                 const response = await axios.get(`https://project-backend-vdkg.onrender.com/freelancers/${user._id}/reviews`);
-//                 setReviews(response.data.reviews || []);
-//             } catch (error) {
-//                 console.error("Error fetching reviews:", error);
-//             }
-//         };
-
-//         fetchReviews();
-//     }, [id]);
-
-//     // Handle review submission by candidate
-//     const handleSubmitReview = async () => {
-//         if (rating === 0 || comment === "") {
-//             alert("Please provide a rating and a comment.");
-//             return;
-//         }
-
-//         try {
-//             const reviewData = {
-//                 freelancerId: user._id,
-//                 clientId: localStorage.getItem("userId"),
-//                 // clientemail: localStorage.getItem("userEmail"),
-//                 rating,
-//                 comment,
-//             };
-
-//             const response = await axios.post("https://project-backend-vdkg.onrender.com/reviews", reviewData);
-
-//             if (response.data) {
-//                 // Update the reviews list with the new review
-//                 setReviews((prevReviews) => [response.data.review, ...prevReviews]);
-//                 setRating(0);
-//                 setComment("");
-//                 alert("Review submitted successfully.");
-//             } else {
-//                 alert("Failed to submit review.");
-//             }
-//         } catch (error) {
-//             console.error("Error submitting review:", error);
-//         }
-//     };
-
-//     return (
-//         <div className="container">
-//             <div className="m-1">
-//                 <div className="card text-center">
-//                     <div className="card-header fs-3 text-uppercase">{user.name}</div>
-//                     <div className="card-body d-flex">
-//                         <div>
-//                             <img
-//                                 src={user.photo}
-//                                 alt=""
-//                                 style={{ height: "300px", width: "300px", margin: "15px" }}
-//                             />
-//                         </div>
-//                         <div>
-//                             <h5 className="card-title">{user.role}</h5>
-//                             <p>{user.experience}</p>
-//                             <p className="card-text">{user.description}</p>
-//                             <p className="fs-3">Skills</p>
-//                             <div className="d-flex">
-//                                 <div className="column text-start">
-//                                     <ul>
-//                                         {user.skills.split(",").map((skill, index) => (
-//                                             <li key={index}>{skill}</li>
-//                                         ))}
-//                                     </ul>
-//                                 </div>
-//                             </div>
-//                             <a href="#" className="btn btn-primary m-3">
-//                                 Hire
-//                             </a>
-//                             {/* <button className="btn btn-primary m-3" onClick={navigate(`/Profile/${user._id}`)} >
-//                                 View
-//                             </button> */}
-//                         </div>
-//                     </div>
-//                     <div className="card-footer text-body-secondary text-start">
-//                         <h5 className="mt-3">Reviews and Ratings:</h5>
-//                         {reviews.length > 0 ? (
-//                             reviews.map((review) => (
-//                                 <div key={review._id} className="border-bottom mb-2">
-//                                     <strong>Rating:</strong> {review.rating} ⭐<br />
-//                                     <strong>Comment:</strong>{review.comment}
-//                                     <br />
-//                                     {review.response && (
-//                                         <div>
-//                                             <strong>Response:</strong> {review.response}
-//                                         </div>
-//                                     )}
-//                                     <div className="text-end text-muted">
-//                                         <small>{new Date(review.createdAt).toLocaleDateString()}</small>
-//                                     </div>
-//                                 </div>
-//                             ))
-//                         ) : (
-//                             <p>No reviews available yet.</p>
-//                         )}
-//                         {/* Display review form for candidates only */}
-//                         {userType === "employer" && (
-//                             <div className="mt-3">
-//                                 <h5>Submit a Review</h5>
-//                                 <div className="mb-2">
-//                                     <label>Rating:</label>
-//                                     <input
-//                                         type="number"
-//                                         className="form-control"
-//                                         min="1"
-//                                         max="5"
-//                                         value={rating}
-//                                         onChange={(e) => setRating(Number(e.target.value))}
-//                                     />
-//                                 </div>
-//                                 <div className="mb-2">
-//                                     <label>Comment:</label>
-//                                     <textarea
-//                                         className="form-control"
-//                                         rows="4"
-//                                         value={comment}
-//                                         onChange={(e) => setComment(e.target.value)}
-//                                     ></textarea>
-//                                 </div>
-//                                 <button className="btn btn-primary" onClick={handleSubmitReview}>
-//                                     Submit Review
-//                                 </button>
-//                             </div>
-//                         )}
-//                     </div>
-//                 </div>
-//             </div>
-//         </div>
-//     );
-// }
-
-// export default UserCard;
-
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 
-function UserCard({ user, appliedCompanies }) {
+function UserCard({ user }) {
     const [reviews, setReviews] = useState([]);
     const [rating, setRating] = useState(0);
     const [comment, setComment] = useState("");
@@ -220,27 +62,11 @@ function UserCard({ user, appliedCompanies }) {
         }
     };
 
-
     return (
         <div className="container">
             <div className="m-1">
                 <div className="card text-center">
                     <div className="card-header fs-3 text-uppercase">{user.name}</div>
-
-                    {/* Display Applied Companies */}
-                    {
-                        <div className="p-3 bg-light text-start">
-                            <h5>Applied Companies:</h5>
-                            <ul>
-                                {appliedCompanies.map((company, index) => (
-                                    <li key={index} className="fw-bold">
-                                        {company}
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-                    }
-
                     <div className="card-body d-flex">
                         <div>
                             <img
@@ -266,7 +92,61 @@ function UserCard({ user, appliedCompanies }) {
                             <a href="#" className="btn btn-primary m-3">
                                 Hire
                             </a>
+                            {/* <button className="btn btn-primary m-3" onClick={navigate(`/Profile/${user._id}`)} >
+                                View
+                            </button> */}
                         </div>
+                    </div>
+                    <div className="card-footer text-body-secondary text-start">
+                        <h5 className="mt-3">Reviews and Ratings:</h5>
+                        {reviews.length > 0 ? (
+                            reviews.map((review) => (
+                                <div key={review._id} className="border-bottom mb-2">
+                                    <strong>Rating:</strong> {review.rating} ⭐<br />
+                                    <strong>Comment:</strong>{review.comment}
+                                    <br />
+                                    {review.response && (
+                                        <div>
+                                            <strong>Response:</strong> {review.response}
+                                        </div>
+                                    )}
+                                    <div className="text-end text-muted">
+                                        <small>{new Date(review.createdAt).toLocaleDateString()}</small>
+                                    </div>
+                                </div>
+                            ))
+                        ) : (
+                            <p>No reviews available yet.</p>
+                        )}
+                        {/* Display review form for candidates only */}
+                        {userType === "employer" && (
+                            <div className="mt-3">
+                                <h5>Submit a Review</h5>
+                                <div className="mb-2">
+                                    <label>Rating:</label>
+                                    <input
+                                        type="number"
+                                        className="form-control"
+                                        min="1"
+                                        max="5"
+                                        value={rating}
+                                        onChange={(e) => setRating(Number(e.target.value))}
+                                    />
+                                </div>
+                                <div className="mb-2">
+                                    <label>Comment:</label>
+                                    <textarea
+                                        className="form-control"
+                                        rows="4"
+                                        value={comment}
+                                        onChange={(e) => setComment(e.target.value)}
+                                    ></textarea>
+                                </div>
+                                <button className="btn btn-primary" onClick={handleSubmitReview}>
+                                    Submit Review
+                                </button>
+                            </div>
+                        )}
                     </div>
                 </div>
             </div>
@@ -275,3 +155,4 @@ function UserCard({ user, appliedCompanies }) {
 }
 
 export default UserCard;
+
