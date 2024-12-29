@@ -1,12 +1,16 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react';
 import userContext from '../UserContext';
 
 function EmployerCards({ employer }) {
-  const { appliedCompany, setAppliedCompany } = useContext(userContext);
+  const { setAppliedCompany } = useContext(userContext);
+  const [isApplied, setIsApplied] = useState(false); // State to track if the job is applied
 
   const handleApply = () => {
     setAppliedCompany(employer.company);
+    setIsApplied(true); // Mark the job as applied
+    alert("Applied successfully");
   };
+
   return (
     <div className="container">
       <div className='m-1'>
@@ -16,7 +20,7 @@ function EmployerCards({ employer }) {
           </div>
           <div className="card-body d-flex">
             <div>
-              <img src={employer.photo} style={{ height: "300px", width: "300px", margin: "15px" }} />
+              <img src={employer.photo} style={{ height: "300px", width: "300px", margin: "15px" }} alt="Company Logo" />
             </div>
             <div>
               <h6 className="card-title">{employer.HRname}</h6>
@@ -33,9 +37,16 @@ function EmployerCards({ employer }) {
                   </ul>
                 </div>
               </div>
-              <button className="btn btn-primary" onClick={handleApply}>
-                Apply
-              </button>
+              {/* Conditional rendering for the button */}
+              {isApplied ? (
+                <button className="btn btn-success" disabled>
+                  Applied
+                </button>
+              ) : (
+                <button className="btn btn-primary" onClick={handleApply}>
+                  Apply
+                </button>
+              )}
             </div>
           </div>
           <div className="card-footer text-body-secondary text-end ">
@@ -49,7 +60,7 @@ function EmployerCards({ employer }) {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default EmployerCards
+export default EmployerCards;
