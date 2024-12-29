@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import userContext from '../UserContext';
 
 function EmployerCards({ employer }) {
   const { appliedCompany, setAppliedCompany } = useContext(userContext);
