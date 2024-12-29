@@ -17,7 +17,6 @@ import employersContext, { EmployersProvider } from "./EmployersContext"
 import EmployerProfile from "./Profile Page/EmployerProfile"
 function App() {
   const { candidat } = useContext(userContext);
-
   const { employer } = useContext(employersContext);
   const [filteredCandidates, setFilteredCandidates] = useState([]);
   const [filteredemployers, setfilteredemployers] = useState([]);
@@ -81,13 +80,13 @@ function App() {
               <Route path="/company-register" element={<EmployerReister />} />
               <Route path="/reset-page" element={<ResetPage />} />
               <Route path="/Profile" element={<UserProfile />} />
-              <Route path="/employerProfile" element={<EmployerProfile />} />
-              <Route path="usermodal" element={<UserModal />} />
-              <Route path="employermodal" element={<EmployerModal />} />
-              <Route path="usermodal/:id" element={<UserModal />} />
-              <Route path="employermodal/:id" element={<EmployerModal />} />
               <Route path="/Profile/:id" element={<UserProfile />} />
+              <Route path="/employerProfile" element={<EmployerProfile />} />
               <Route path="/employerProfile/:id" element={<EmployerProfile />} />
+              <Route path="usermodal" element={<UserModal />} />
+              <Route path="usermodal/:id" element={<UserModal />} />
+              <Route path="employermodal" element={<EmployerModal />} />
+              <Route path="employermodal/:id" element={<EmployerModal />} />
 
             </Routes>
           </BrowserRouter>
