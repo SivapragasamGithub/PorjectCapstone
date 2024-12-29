@@ -5,6 +5,8 @@ const userContext = createContext();
 
 export const UserProvider = ({ children }) => {
     const [candidat, setCandidate] = useState([]);
+    const [appliedCompany, setAppliedCompany] = useState("");
+
     // console.log(candidat);
     const getData = async () => {
         // console.log("Before axios");
@@ -20,7 +22,7 @@ export const UserProvider = ({ children }) => {
         getData()
     }, [])
 
-    return <userContext.Provider value={{ candidat, setCandidate }}>
+    return <userContext.Provider value={{ candidat, setCandidate,appliedCompany,setAppliedCompany }}>
         {children}
     </userContext.Provider>
 }

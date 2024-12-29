@@ -1,6 +1,11 @@
 import React from 'react'
 
 function EmployerCards({ employer }) {
+  const { appliedCompany, setAppliedCompany } = useContext(userContext);
+
+  const handleApply = () => {
+    setAppliedCompany(employer.company);
+  };
   return (
     <div className="container">
       <div className='m-1'>
@@ -27,7 +32,9 @@ function EmployerCards({ employer }) {
                   </ul>
                 </div>
               </div>
-              <a href="#" className="btn btn-primary">Apply</a>
+              <button className="btn btn-primary" onClick={handleApply}>
+                Apply
+              </button>
             </div>
           </div>
           <div className="card-footer text-body-secondary text-end ">
