@@ -87,7 +87,6 @@ function App() {
               <Route path="usermodal/:id" element={<UserModal />} />
               <Route path="employermodal" element={<EmployerModal />} />
               <Route path="employermodal/:id" element={<EmployerModal />} />
-
             </Routes>
           </BrowserRouter>
         </EmployersProvider>

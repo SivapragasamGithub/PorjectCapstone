@@ -87,7 +87,7 @@ function UserProfile() {
             <div className="row g-1">
               <div className="col-md-4 mt-8">
                 <p>
-                  <strong>Applied Company:</strong> {...appliedCompany || "None"}
+                  <strong>Applied Company:</strong> {appliedCompany || "None"}
                 </p>
                 <br />
                 <br />
