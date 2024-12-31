@@ -103,6 +103,9 @@ function UserCard({ user }) {
                             {/* <button className="btn btn-primary m-3" onClick={navigate(`/Profile/${user._id}`)} >
                                 View
                             </button> */}
+                            <p>
+                                <strong>Hired:</strong> {hired || "None"}
+                            </p>
                         </div>
                     </div>
                     <div className="card-footer text-body-secondary text-start">

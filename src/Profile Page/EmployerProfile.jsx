@@ -2,11 +2,9 @@ import React, { useContext, useEffect, useState } from "react";
 import employersContext from "../EmployersContext";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
-import userContext from "../UserContext";
 
 function EmployerProfile() {
   const { employer } = useContext(employersContext);
-  const { candidat, appliedCompany, setAppliedCompany,hired } = useContext(userContext);
   const { id } = useParams();
   const [employerDetail, setEmployerDetail] = useState(null);
 
@@ -50,9 +48,6 @@ function EmployerProfile() {
               </div>
               <div className="col-md-8">
                 <div className="card-body">
-                  <p>
-                    <strong>Hired:</strong> {hired || "None"}
-                  </p>
                   <p>
                     <strong>Company:</strong> {employerDetail.company}
                   </p>
