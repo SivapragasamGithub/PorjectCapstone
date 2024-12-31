@@ -2,11 +2,11 @@ import React, { useContext, useState } from 'react';
 import userContext from '../UserContext';
 
 function EmployerCards({ employer }) {
-  const { setAppliedCompany } = useContext(userContext);
+  const { setAppliedCompany, appliedCompany } = useContext(userContext);
   const [isApplied, setIsApplied] = useState(false); // State to track if the job is applied
 
   const handleApply = () => {
-    setAppliedCompany(employer.company);
+    setAppliedCompany(...appliedCompany, employer.company);
     setIsApplied(true); // Mark the job as applied
     alert("Applied successfully");
   };

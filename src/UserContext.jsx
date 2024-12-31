@@ -6,6 +6,7 @@ const userContext = createContext();
 export const UserProvider = ({ children }) => {
     const [candidat, setCandidate] = useState([]);
     const [appliedCompany, setAppliedCompany] = useState("");
+    const [hired, setHired] = useState("")
 
     // console.log(candidat);
     const getData = async () => {
@@ -22,7 +23,7 @@ export const UserProvider = ({ children }) => {
         getData()
     }, [])
 
-    return <userContext.Provider value={{ candidat, setCandidate, appliedCompany, setAppliedCompany }}>
+    return <userContext.Provider value={{ candidat, setCandidate, appliedCompany, setAppliedCompany, hired, setHired }}>
         {children}
     </userContext.Provider>
 }

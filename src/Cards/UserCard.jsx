@@ -1,12 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
+import userContext from "../UserContext";
 
 function UserCard({ user }) {
     const [reviews, setReviews] = useState([]);
     const [rating, setRating] = useState(0);
     const [comment, setComment] = useState("");
     const [userType, setUserType] = useState("");
+    const { hired, setHired } = useContext(userContext);
     const navigate = useNavigate();
     const { id } = useParams
 
@@ -62,6 +64,12 @@ function UserCard({ user }) {
         }
     };
 
+
+    const handleApply = () => {
+        setHired(...hired, user.name);
+        // setIsApplied(true);
+        alert("hired successfully");
+    };
     return (
         <div className="container">
             <div className="m-1">
@@ -89,9 +97,9 @@ function UserCard({ user }) {
                                     </ul>
                                 </div>
                             </div>
-                            <a href="#" className="btn btn-primary m-3">
+                            <button className="btn btn-primary" onClick={handleApply}>
                                 Hire
-                            </a>
+                            </button>
                             {/* <button className="btn btn-primary m-3" onClick={navigate(`/Profile/${user._id}`)} >
                                 View
                             </button> */}
