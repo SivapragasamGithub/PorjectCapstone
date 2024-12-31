@@ -64,16 +64,6 @@ function UserCard({ user }) {
         }
     };
 
-
-    // const handleApply = () => {
-    //     const storedhired = JSON.parse(localStorage.getItem("hired"))
-    //     const updatedhired = [...storedhired, user.name]
-    //     localStorage.setItem("hired", JSON.stringify(updatedhired))
-    //     setHired(updatedhired);
-    //     // setIsApplied(true);
-    //     alert("hired successfully");
-    // };
-
     const handleApply = () => {
         const storedHired = JSON.parse(localStorage.getItem("hired")) || [];
         const updatedHired = [...storedHired, user.name];
@@ -81,7 +71,7 @@ function UserCard({ user }) {
         setHired(updatedHired);
         alert("Hired successfully");
     };
-    
+
     return (
         <div className="container">
             <div className="m-1">
