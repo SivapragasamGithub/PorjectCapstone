@@ -6,7 +6,7 @@ function EmployerCards({ employer }) {
   const [isApplied, setIsApplied] = useState(false); // State to track if the job is applied
 
   const handleApply = () => {
-    setAppliedCompany(...appliedCompany, employer.company);
+    setAppliedCompany(employer.company);
     setIsApplied(true); // Mark the job as applied
     alert("Applied successfully");
   };

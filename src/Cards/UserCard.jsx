@@ -66,7 +66,7 @@ function UserCard({ user }) {
 
 
     const handleApply = () => {
-        setHired(...hired, user.name);
+        setHired(user.name);
         // setIsApplied(true);
         alert("hired successfully");
     };
