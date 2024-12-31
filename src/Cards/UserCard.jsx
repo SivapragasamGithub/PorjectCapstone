@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
-import { useNavigate, useParams } from "react-router-dom";
+import { json, useNavigate, useParams } from "react-router-dom";
 import userContext from "../UserContext";
 
 function UserCard({ user }) {
@@ -66,7 +66,10 @@ function UserCard({ user }) {
 
 
     const handleApply = () => {
-        setHired(user.name);
+        const storedhired = JSON.parse(localStorage.getItem("hired"))
+        const updatedhired = [...storedhired, user.name]
+        localStorage.setItem("hired", JSON.stringify(updatedhired))
+        setHired(updatedhired);
         // setIsApplied(true);
         alert("hired successfully");
     };
@@ -104,7 +107,7 @@ function UserCard({ user }) {
                                 View
                             </button> */}
                             <p>
-                                <strong>Hired:</strong> {hired || "None"}
+                                <strong>Hired:</strong>{" "} {hired.join(", ") || "None"}
                             </p>
                         </div>
                     </div>
