@@ -65,14 +65,23 @@ function UserCard({ user }) {
     };
 
 
+    // const handleApply = () => {
+    //     const storedhired = JSON.parse(localStorage.getItem("hired"))
+    //     const updatedhired = [...storedhired, user.name]
+    //     localStorage.setItem("hired", JSON.stringify(updatedhired))
+    //     setHired(updatedhired);
+    //     // setIsApplied(true);
+    //     alert("hired successfully");
+    // };
+
     const handleApply = () => {
-        const storedhired = JSON.parse(localStorage.getItem("hired"))
-        const updatedhired = [...storedhired, user.name]
-        localStorage.setItem("hired", JSON.stringify(updatedhired))
-        setHired(updatedhired);
-        // setIsApplied(true);
-        alert("hired successfully");
+        const storedHired = JSON.parse(localStorage.getItem("hired")) || [];
+        const updatedHired = [...storedHired, user.name];
+        localStorage.setItem("hired", JSON.stringify(updatedHired));
+        setHired(updatedHired);
+        alert("Hired successfully");
     };
+    
     return (
         <div className="container">
             <div className="m-1">
@@ -107,8 +116,10 @@ function UserCard({ user }) {
                                 View
                             </button> */}
                             <p>
-                                <strong>Hired:</strong>{" "} {hired.join(", ") || "None"}
+                                <strong>Hired:</strong>{" "}
+                                {Array.isArray(hired) && hired.length > 0 ? hired.join(", ") : "None"}
                             </p>
+
                         </div>
                     </div>
                     <div className="card-footer text-body-secondary text-start">
