@@ -87,8 +87,12 @@ function UserProfile() {
             <div className="row g-1">
               <div className="col-md-4 mt-8">
                 <p>
-                  <strong>Applied Company:</strong> {appliedCompany.join(", ") || "None"}
+                  <strong>Applied Company:</strong>{" "}
+                  {Array.isArray(appliedCompany) && appliedCompany.length > 0
+                    ? appliedCompany.join(", ")
+                    : "None"}
                 </p>
+
                 <br />
                 <br />
                 <img
