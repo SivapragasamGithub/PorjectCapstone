@@ -70,7 +70,9 @@ function UserCard({ user }) {
             alert("User Authentication Error");
         } else {
             const storedHired = JSON.parse(localStorage.getItem("hired")) || [];
+            console.log("the previous hired is:", storedHired);
             const updatedHired = [...storedHired, user.name];
+            console.log("the new hired is:", updatedHired);
             localStorage.setItem("hired", JSON.stringify(updatedHired));
             setHired(updatedHired);
             alert("Hired successfully");
