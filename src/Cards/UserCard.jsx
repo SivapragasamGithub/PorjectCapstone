@@ -117,18 +117,14 @@ function UserCard({ user }) {
                                     </ul>
                                 </div>
                             </div>
-                            {userType === "employer" && (
-                                <>
-                                    {isHired ? (
-                                        <button className="btn btn-success" disabled>
-                                            Hired
-                                        </button>
-                                    ) : (
-                                        <button className="btn btn-primary" onClick={handleApply}>
-                                            Hire
-                                        </button>
-                                    )}
-                                </>
+                            {isHired ? (
+                                <button className="btn btn-success" disabled>
+                                    Hired
+                                </button>
+                            ) : (
+                                <button className="btn btn-primary" onClick={handleApply}>
+                                    Hire
+                                </button>
                             )}
                             {/* <button className="btn btn-primary" onClick={handleApply}>
                                 Hire
