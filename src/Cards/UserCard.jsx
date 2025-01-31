@@ -9,6 +9,7 @@ function UserCard({ user }) {
     const [comment, setComment] = useState("");
     const [userType, setUserType] = useState("");
     const [isApplied, setIsApplied] = useState(false); // State to track if the job is applied
+    const [isHired, setIsHired] = useState(false); // State to track if the candidate is hired
 
     const { hired, setHired } = useContext(userContext);
     const navigate = useNavigate();
@@ -16,9 +17,9 @@ function UserCard({ user }) {
 
     // Check if the job is already applied on component mount
     useEffect(() => {
-        const storedCandidates = JSON.parse(localStorage.getItem('HiredCandidates')) || [];
-        if (storedCandidates.includes(user.name)) {
-            setIsApplied(true);
+        const storedHired = JSON.parse(localStorage.getItem('hired')) || [];
+        if (storedHired.includes(user.name)) {
+            setIsHired(true);
         }
     }, [user.name]);
 
@@ -85,7 +86,7 @@ function UserCard({ user }) {
             console.log("the new hired is:", updatedHired);
             localStorage.setItem("hired", JSON.stringify(updatedHired));
             setHired(updatedHired);
-            setIsApplied(true)// Mark the job as applied
+            setIsHired(true)// Mark the job as applied
             alert(`${user.name} Hired successfully `);
         }
 
@@ -118,14 +119,18 @@ function UserCard({ user }) {
                                     </ul>
                                 </div>
                             </div>
-                            {isApplied ? (
-                                <button className="btn btn-success" disabled>
-                                    Hired
-                                </button>
-                            ) : (
-                                <button className="btn btn-primary" onClick={handleApply}>
-                                    Hire
-                                </button>
+                            {userType === "employer" && (
+                                <>
+                                    {isHired ? (
+                                        <button className="btn btn-success" disabled>
+                                            Hired
+                                        </button>
+                                    ) : (
+                                        <button className="btn btn-primary" onClick={handleApply}>
+                                            Hire
+                                        </button>
+                                    )}
+                                </>
                             )}
                             {/* <button className="btn btn-primary" onClick={handleApply}>
                                 Hire

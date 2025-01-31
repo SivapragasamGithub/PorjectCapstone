@@ -4,7 +4,7 @@ import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 
 function UserProfile() {
-  const { candidat, appliedCompany, setAppliedCompany } = useContext(userContext);
+  const { candidat, appliedCompany,hired, setAppliedCompany } = useContext(userContext);
   const { id } = useParams();
   const [userDetail, setUserDetail] = useState(null);
   const [reviews, setReviews] = useState([]);

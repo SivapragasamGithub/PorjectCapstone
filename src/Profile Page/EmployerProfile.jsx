@@ -78,7 +78,7 @@ function EmployerProfile() {
                     <strong>Hired Candidates:</strong>{" "}
                     {
                       Array.isArray(hired) && hired.length > 0 ? hired.join(", ")
-                      :"none"
+                        : "none"
                     }
                     {/* {Array.isArray(hired) && hired.length > 0
                       ? hired.join(", ")

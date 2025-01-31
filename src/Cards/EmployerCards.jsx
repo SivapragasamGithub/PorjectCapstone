@@ -59,7 +59,20 @@ function EmployerCards({ employer }) {
                 </div>
               </div>
               {/* Conditional rendering for the button */}
-              {isApplied ? (
+              {localStorage.getItem("userType") === "candidate" && (
+                <>
+                  {isApplied ? (
+                    <button className="btn btn-success" disabled>
+                      Applied
+                    </button>
+                  ) : (
+                    <button className="btn btn-primary" onClick={handleApply}>
+                      Apply
+                    </button>
+                  )}
+                </>
+              )}
+              {/* {isApplied ? (
                 <button className="btn btn-success" disabled>
                   Applied
                 </button>
@@ -67,7 +80,7 @@ function EmployerCards({ employer }) {
                 <button className="btn btn-primary" onClick={handleApply}>
                   Apply
                 </button>
-              )}
+              )} */}
             </div>
           </div>
           <div className="card-footer text-body-secondary text-end">
