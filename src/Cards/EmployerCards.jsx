@@ -14,13 +14,18 @@ function EmployerCards({ employer }) {
   }, [employer.company]);
 
   const handleApply = () => {
-    const storedAppliedCompanies = JSON.parse(localStorage.getItem('appliedCompanies')) || [];
-    const updatedAppliedCompanies = [...storedAppliedCompanies, employer.company];
-    localStorage.setItem('appliedCompanies', JSON.stringify(updatedAppliedCompanies)); // Save to localStorage
+    const userType = localStorage.getItem("userType")
+    if (userType !== "candidate") {
+      alert("User Authentication Error");
+    } else {
+      const storedAppliedCompanies = JSON.parse(localStorage.getItem('appliedCompanies')) || [];
+      const updatedAppliedCompanies = [...storedAppliedCompanies, employer.company];
+      localStorage.setItem('appliedCompanies', JSON.stringify(updatedAppliedCompanies)); // Save to localStorage
 
-    setAppliedCompany(updatedAppliedCompanies); // Update context
-    setIsApplied(true); // Mark the job as applied
-    alert(`Applied successfully to ${employer.company}`);
+      setAppliedCompany(updatedAppliedCompanies); // Update context
+      setIsApplied(true); // Mark the job as applied
+      alert(`Applied successfully to ${employer.company}`);
+    }
   };
 
   return (

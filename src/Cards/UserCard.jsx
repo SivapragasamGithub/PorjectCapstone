@@ -14,6 +14,14 @@ function UserCard({ user }) {
     const navigate = useNavigate();
     const { id } = useParams
 
+    // Check if the job is already applied on component mount
+    useEffect(() => {
+        const storedCandidates = JSON.parse(localStorage.getItem('HiredCandidates')) || [];
+        if (storedCandidates.includes(user.name)) {
+            setIsApplied(true);
+        }
+    }, [user.name]);
+
     // Check if the current user is a candidate or an employer
     useEffect(() => {
         const currentUserType = localStorage.getItem("userType");
