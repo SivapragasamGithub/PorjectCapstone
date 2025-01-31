@@ -76,9 +76,14 @@ function EmployerProfile() {
                   <br />
                   <p>
                     <strong>Hired Candidates:</strong>{" "}
-                    {Array.isArray(hired) && hired.length > 0
+                    {
+                      Array.isArray(hired) && hired.length > 0 ? hired.join(", ")
+                      :"none"
+                    }
+                    {/* {Array.isArray(hired) && hired.length > 0
                       ? hired.join(", ")
-                      : "None"}
+                      : "None"} */}
+
                   </p>
                 </div>
               </div>
