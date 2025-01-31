@@ -68,7 +68,6 @@ function UserCard({ user }) {
         const userType = localStorage.getItem("userType")
 if (userType !== employer){
     alert("User Authentication Error");
-
 }else{
     const storedHired = JSON.parse(localStorage.getItem("hired")) || [];
     const updatedHired = [...storedHired, user.name];
