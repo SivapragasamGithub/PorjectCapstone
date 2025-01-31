@@ -4,7 +4,7 @@ import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 
 function EmployerProfile() {
-  const { employer } = useContext(employersContext);
+  const { employer, hired } = useContext(employersContext);
   const { id } = useParams();
   const [employerDetail, setEmployerDetail] = useState(null);
 
@@ -71,6 +71,14 @@ function EmployerProfile() {
                   </p>
                   <p>
                     <strong>Role:</strong> {employerDetail.role}
+                  </p>
+                  <br />
+                  <br />
+                  <p>
+                    <strong>Hired Candidates:</strong>{" "}
+                    {Array.isArray(hired) && hired.length > 0
+                      ? hired.join(", ")
+                      : "None"}
                   </p>
                 </div>
               </div>

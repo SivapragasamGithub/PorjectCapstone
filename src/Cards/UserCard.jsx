@@ -85,7 +85,8 @@ function UserCard({ user }) {
             console.log("the new hired is:", updatedHired);
             localStorage.setItem("hired", JSON.stringify(updatedHired));
             setHired(updatedHired);
-            alert("Hired successfully");
+            setHired(true)// Mark the job as applied
+            alert(`${user.name} Hired successfully `);
         }
 
     };
@@ -132,10 +133,10 @@ function UserCard({ user }) {
                             {/* <button className="btn btn-primary m-3" onClick={navigate(`/Profile/${user._id}`)} >
                                 View
                             </button> */}
-                            <p>
+                            {/* <p>
                                 <strong>Hired:</strong>{" "}
                                 {Array.isArray(hired) && hired.length > 0 ? hired.join(", ") : "None"}
-                            </p>
+                            </p> */}
 
                         </div>
                     </div>
