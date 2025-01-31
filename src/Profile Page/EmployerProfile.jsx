@@ -2,9 +2,11 @@ import React, { useContext, useEffect, useState } from "react";
 import employersContext from "../EmployersContext";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
+import userContext from "../UserContext";
 
 function EmployerProfile() {
-  const { employer, hired } = useContext(employersContext);
+  const { employer } = useContext(employersContext);
+  const { hired } = useContext(userContext);
   const { id } = useParams();
   const [employerDetail, setEmployerDetail] = useState(null);
 

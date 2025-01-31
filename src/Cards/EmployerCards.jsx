@@ -21,7 +21,6 @@ function EmployerCards({ employer }) {
       const storedAppliedCompanies = JSON.parse(localStorage.getItem('appliedCompanies')) || [];
       const updatedAppliedCompanies = [...storedAppliedCompanies, employer.company];
       localStorage.setItem('appliedCompanies', JSON.stringify(updatedAppliedCompanies)); // Save to localStorage
-
       setAppliedCompany(updatedAppliedCompanies); // Update context
       setIsApplied(true); // Mark the job as applied
       alert(`Applied successfully to ${employer.company}`);
