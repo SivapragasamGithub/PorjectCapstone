@@ -8,6 +8,8 @@ function UserCard({ user }) {
     const [rating, setRating] = useState(0);
     const [comment, setComment] = useState("");
     const [userType, setUserType] = useState("");
+    const [isApplied, setIsApplied] = useState(false); // State to track if the job is applied
+
     const { hired, setHired } = useContext(userContext);
     const navigate = useNavigate();
     const { id } = useParams
@@ -107,9 +109,18 @@ function UserCard({ user }) {
                                     </ul>
                                 </div>
                             </div>
-                            <button className="btn btn-primary" onClick={handleApply}>
+                            {isApplied ? (
+                                <button className="btn btn-success" disabled>
+                                    Hired
+                                </button>
+                            ) : (
+                                <button className="btn btn-primary" onClick={handleApply}>
+                                    Hire
+                                </button>
+                            )}
+                            {/* <button className="btn btn-primary" onClick={handleApply}>
                                 Hire
-                            </button>
+                            </button> */}
                             {/* <button className="btn btn-primary m-3" onClick={navigate(`/Profile/${user._id}`)} >
                                 View
                             </button> */}
