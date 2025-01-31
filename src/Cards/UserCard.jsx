@@ -85,7 +85,7 @@ function UserCard({ user }) {
             console.log("the new hired is:", updatedHired);
             localStorage.setItem("hired", JSON.stringify(updatedHired));
             setHired(updatedHired);
-            setHired(true)// Mark the job as applied
+            setIsApplied(true)// Mark the job as applied
             alert(`${user.name} Hired successfully `);
         }
 
