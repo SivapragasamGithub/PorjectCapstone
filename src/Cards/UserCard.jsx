@@ -65,11 +65,17 @@ function UserCard({ user }) {
     };
 
     const handleApply = () => {
-        const storedHired = JSON.parse(localStorage.getItem("hired")) || [];
-        const updatedHired = [...storedHired, user.name];
-        localStorage.setItem("hired", JSON.stringify(updatedHired));
-        setHired(updatedHired);
-        alert("Hired successfully");
+        const userType = localStorage.getItem("userType")
+if (userType !== employer){
+    alert("User Authentication Error");
+
+}else{
+    const storedHired = JSON.parse(localStorage.getItem("hired")) || [];
+    const updatedHired = [...storedHired, user.name];
+    localStorage.setItem("hired", JSON.stringify(updatedHired));
+    setHired(updatedHired);
+    alert("Hired successfully");}
+        
     };
 
     return (
